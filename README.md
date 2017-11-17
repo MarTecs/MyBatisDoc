@@ -171,3 +171,58 @@ public class User implements Serializable {
  	</select>
 </mapper>
 ```
+----
+
+## 一个基本的测试用例
+
+```Java
+package cn.itheima.test;
+
+import java.io.InputStream;
+import java.util.List;
+
+import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import org.junit.Test;
+
+import cn.itheima.pojo.User;
+
+public class UserTest {
+
+	@Test
+	public void testFindUserById() throws Exception {
+
+		/* 通过流将核心配置文件读取进来，然后通过核心配置文件输入流来创建会话工厂 */
+		String resource = "SqlMapConfig.xml";
+		InputStream inputstream = Resources.getResourceAsStream(resource);
+		SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(inputstream);
+
+		/* 通过工厂创建会话 */
+		SqlSession session = factory.openSession();
+
+		/*
+		 * 第1个参数：sql语句(等于 namespace + . + sql语句的id) 第2个参数，所要查找的编号
+		 */
+		User user = session.selectOne("test.findUserById", 1);
+		System.out.println(user);
+	}
+
+	@Test
+	public void findUserByUsername() throws Exception {
+
+		SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(Resources.getResourceAsStream("SqlMapConfig.xml"));
+		SqlSession session = factory.openSession();
+		
+		/*如果这样写的话，SQL语句将会是一个参数，而不是通配符查找*/
+		List<User> list = session.selectList("test.findUserByUserName", "%王%");
+		for (User user : list) {
+			System.out.println(user.getUsername());
+		}
+
+	}
+
+}
+
+```
