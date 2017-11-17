@@ -4,10 +4,10 @@ To describe how to use MyBatis first!<BR />
 
 
 ## 目录介绍
-depend：mybatis所依赖的jar包
-conf：存放Mybatis核心配置文件以及持久化类的映射文件规范
-junit：mybatis使用junit测试包，确认无冲突
-required：mybatis开发所必须的包
+1. depend：mybatis所依赖的jar包
+2. conf：存放Mybatis核心配置文件以及持久化类的映射文件规范
+3. junit：mybatis使用junit测试包，确认无冲突
+4. required：mybatis开发所必须的包
 
 -----
 
