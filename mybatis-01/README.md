@@ -6,7 +6,6 @@
 ## 基本步骤
 1. 新建一个web project
 2. 导入所需的jar包（mybatis核心包，mybatis依赖包，junit包）
-3.
 
 -----
 
