@@ -1,22 +1,17 @@
 
 
-## Ä¿Â¼½éÉÜ
-1. depend£ºmybatisËùÒÀÀµµÄjar°ü
-2. conf£º´æ·ÅMybatisºËĞÄÅäÖÃÎÄ¼şÒÔ¼°³Ö¾Ã»¯ÀàµÄÓ³ÉäÎÄ¼ş¹æ·¶
-3. junit£ºmybatisÊ¹ÓÃjunit²âÊÔ°ü£¬È·ÈÏÎŞ³åÍ»
-4. required£ºmybatis¿ª·¢Ëù±ØĞëµÄ°ü
 
 -----
 
-## »ù±¾²½Öè
-1. ĞÂ½¨Ò»¸öweb project
-2. µ¼ÈëËùĞèµÄjar°ü£¨mybatisºËĞÄ°ü£¬mybatisÒÀÀµ°ü£¬junit°ü£©
+## åŸºæœ¬æ­¥éª¤
+1. æ–°å»ºä¸€ä¸ªweb project
+2. å¯¼å…¥æ‰€éœ€çš„jaråŒ…ï¼ˆmybatisæ ¸å¿ƒåŒ…ï¼Œmybatisä¾èµ–åŒ…ï¼ŒjunitåŒ…ï¼‰
 3.
 
 -----
 
 
-## Ò»¸ö»ù±¾µÄSQL½Å±¾
+## ä¸€ä¸ªåŸºæœ¬çš„SQLè„šæœ¬
 ```SQL
 SET FOREIGN_KEY_CHECKS=0;
 
@@ -26,10 +21,10 @@ SET FOREIGN_KEY_CHECKS=0;
 DROP TABLE IF EXISTS `orders`;
 CREATE TABLE `orders` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `user_id` int(11) NOT NULL COMMENT 'ÏÂµ¥ÓÃ»§id',
-  `number` varchar(32) NOT NULL COMMENT '¶©µ¥ºÅ',
-  `createtime` datetime NOT NULL COMMENT '´´½¨¶©µ¥Ê±¼ä',
-  `note` varchar(100) DEFAULT NULL COMMENT '±¸×¢',
+  `user_id` int(11) NOT NULL COMMENT 'ä¸‹å•ç”¨æˆ·id',
+  `number` varchar(32) NOT NULL COMMENT 'è®¢å•å·',
+  `createtime` datetime NOT NULL COMMENT 'åˆ›å»ºè®¢å•æ—¶é—´',
+  `note` varchar(100) DEFAULT NULL COMMENT 'å¤‡æ³¨',
   PRIMARY KEY (`id`),
   KEY `FK_orders_1` (`user_id`),
   CONSTRAINT `FK_orders_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
@@ -48,30 +43,30 @@ INSERT INTO `orders` VALUES ('5', '10', '1000012', '2015-02-12 16:13:23', null);
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `username` varchar(32) NOT NULL COMMENT 'ÓÃ»§Ãû³Æ',
-  `birthday` date DEFAULT NULL COMMENT 'ÉúÈÕ',
-  `sex` char(1) DEFAULT NULL COMMENT 'ĞÔ±ğ',
-  `address` varchar(256) DEFAULT NULL COMMENT 'µØÖ·',
+  `username` varchar(32) NOT NULL COMMENT 'ç”¨æˆ·åç§°',
+  `birthday` date DEFAULT NULL COMMENT 'ç”Ÿæ—¥',
+  `sex` char(1) DEFAULT NULL COMMENT 'æ€§åˆ«',
+  `address` varchar(256) DEFAULT NULL COMMENT 'åœ°å€',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES ('1', 'ÍõÎå', null, '2', null);
-INSERT INTO `user` VALUES ('10', 'ÕÅÈı', '2014-07-10', '1', '±±¾©ÊĞ');
-INSERT INTO `user` VALUES ('16', 'ÕÅĞ¡Ã÷', null, '1', 'ºÓÄÏÖ£Öİ');
-INSERT INTO `user` VALUES ('22', '³ÂĞ¡Ã÷', null, '1', 'ºÓÄÏÖ£Öİ');
-INSERT INTO `user` VALUES ('24', 'ÕÅÈı·á', null, '1', 'ºÓÄÏÖ£Öİ');
-INSERT INTO `user` VALUES ('25', '³ÂĞ¡Ã÷', null, '1', 'ºÓÄÏÖ£Öİ');
-INSERT INTO `user` VALUES ('26', 'ÍõÎå', null, null, null);
+INSERT INTO `user` VALUES ('1', 'ç‹äº”', null, '2', null);
+INSERT INTO `user` VALUES ('10', 'å¼ ä¸‰', '2014-07-10', '1', 'åŒ—äº¬å¸‚');
+INSERT INTO `user` VALUES ('16', 'å¼ å°æ˜', null, '1', 'æ²³å—éƒ‘å·');
+INSERT INTO `user` VALUES ('22', 'é™ˆå°æ˜', null, '1', 'æ²³å—éƒ‘å·');
+INSERT INTO `user` VALUES ('24', 'å¼ ä¸‰ä¸°', null, '1', 'æ²³å—éƒ‘å·');
+INSERT INTO `user` VALUES ('25', 'é™ˆå°æ˜', null, '1', 'æ²³å—éƒ‘å·');
+INSERT INTO `user` VALUES ('26', 'ç‹äº”', null, null, null);
 
 ```
 
 
 
 -----
-## Ò»¸ö»ù±¾µÄJavaBean
+## ä¸€ä¸ªåŸºæœ¬çš„JavaBean
 ```Java
 package cn.itheima.pojo;
 
@@ -130,7 +125,7 @@ public class User implements Serializable {
 ------
 
 
-## MyBatis×ÜÅäÖÃÎÄ¼ş
+## MyBatisæ€»é…ç½®æ–‡ä»¶
 ```XML
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE configuration  PUBLIC 
@@ -153,30 +148,30 @@ public class User implements Serializable {
 
 ----
 
-## ³Ö¾Ã»¯ÀàµÄÓ³ÉäÎÄ¼ş
+## æŒä¹…åŒ–ç±»çš„æ˜ å°„æ–‡ä»¶
 ```XML
 <?xml version="1.0" encoding="UTF-8" ?> 
 <!DOCTYPE mapper  PUBLIC 
 "-//mybatis.org//DTD Mapper 3.0//EN"  
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<!-- namespace:ÃüÃû¿Õ¼ä£¬ÓÃÀ´×öSQL¸ôÀë -->
+<!-- namespace:å‘½åç©ºé—´ï¼Œç”¨æ¥åšSQLéš”ç¦» -->
 <mapper namespace="test">
-	<!-- id:sqlÓï¾äÎ¨Ò»±íÊ¾
-		parameterType£ºÖ¸¶¨´«Èë²ÎÊıÀàĞÍ
-		resultType£º·µ»Ø½á¹ûÀàĞÍ
-		#{}£ºÕ¼Î»·û£¬Æğµ½Õ¼Î»×÷ÓÃ£¬Èç¹û·µ»ØµÄ½á¹ûÊÇ»ù±¾ÀàĞÍ(string int long ....),Ôò#{}ÖĞµÄ±äÁ¿¿ÉÒÔÈÎÒâĞ´
-		 ¼òµ¥µÄ¸ù¾İID²éÑ¯Ò»¸öÓÃ»§
-		%{}£ºÆ´½Ó·û£¬×Ö·û´®Ô­ÑùÆ´½Ó£¬Èç¹û´«ÈëµÄ²ÎÊıÊÇ»ù±¾ÀàĞÍ£¬ÄÇÃ´${}ÖĞµÄ±äÁ¿±ØĞëÊÇvalue
+	<!-- id:sqlè¯­å¥å”¯ä¸€è¡¨ç¤º
+		parameterTypeï¼šæŒ‡å®šä¼ å…¥å‚æ•°ç±»å‹
+		resultTypeï¼šè¿”å›ç»“æœç±»å‹
+		#{}ï¼šå ä½ç¬¦ï¼Œèµ·åˆ°å ä½ä½œç”¨ï¼Œå¦‚æœè¿”å›çš„ç»“æœæ˜¯åŸºæœ¬ç±»å‹(string int long ....),åˆ™#{}ä¸­çš„å˜é‡å¯ä»¥ä»»æ„å†™
+		 ç®€å•çš„æ ¹æ®IDæŸ¥è¯¢ä¸€ä¸ªç”¨æˆ·
+		%{}ï¼šæ‹¼æ¥ç¬¦ï¼Œå­—ç¬¦ä¸²åŸæ ·æ‹¼æ¥ï¼Œå¦‚æœä¼ å…¥çš„å‚æ•°æ˜¯åŸºæœ¬ç±»å‹ï¼Œé‚£ä¹ˆ${}ä¸­çš„å˜é‡å¿…é¡»æ˜¯value
 		 -->
  	<select id="findUserById" parameterType="java.lang.Integer" resultType="cn.itheima.pojo.User">
  		select * from user where id = #{id}
  	</select>
  	
- 	<!-- Èç¹û·µ»Ø½á¹ûÎª¼¯ºÏ£¬¿ÉÒÔµ÷ÓÃselectList·½·¨£¬Õâ¸ö·½·¨·µ»ØµÄ½á¹û¾ÍÊÇÒ»¸ö¼¯ºÏ£¬ËùÒÔÓ³ÉäÎÄ¼şÖĞÓ¦¸ÃÅäÖÃ³É¼¯ºÏ·ºĞÍµÄÀàĞÍ -->
+ 	<!-- å¦‚æœè¿”å›ç»“æœä¸ºé›†åˆï¼Œå¯ä»¥è°ƒç”¨selectListæ–¹æ³•ï¼Œè¿™ä¸ªæ–¹æ³•è¿”å›çš„ç»“æœå°±æ˜¯ä¸€ä¸ªé›†åˆï¼Œæ‰€ä»¥æ˜ å°„æ–‡ä»¶ä¸­åº”è¯¥é…ç½®æˆé›†åˆæ³›å‹çš„ç±»å‹ -->
  	<select id="findUserByUserName" parameterType="java.lang.String" resultType="cn.itheima.pojo.User">
- 		<!-- /*Èç¹ûÕâÑùĞ´µÄ»°£¬SQLÓï¾ä½«»áÊÇÒ»¸ö²ÎÊı£¬¶ø²»ÊÇÍ¨Åä·û²éÕÒ*/ 
- 			ÕâÀïÊ¹ÓÃÁËÆ´½Ó·û½øĞĞÊ¹ÓÃ£¬ÓĞSQL×¢ÈëµÄ·çÏÕ£¬ËùÒÔ½÷É÷Ê¹ÓÃ£¡ 	
+ 		<!-- /*å¦‚æœè¿™æ ·å†™çš„è¯ï¼ŒSQLè¯­å¥å°†ä¼šæ˜¯ä¸€ä¸ªå‚æ•°ï¼Œè€Œä¸æ˜¯é€šé…ç¬¦æŸ¥æ‰¾*/ 
+ 			è¿™é‡Œä½¿ç”¨äº†æ‹¼æ¥ç¬¦è¿›è¡Œä½¿ç”¨ï¼Œæœ‰SQLæ³¨å…¥çš„é£é™©ï¼Œæ‰€ä»¥è°¨æ…ä½¿ç”¨ï¼ 	
  			select * from user where username like ${}
  		-->
  		select * from user where username like '%{value}%'
@@ -185,7 +180,7 @@ public class User implements Serializable {
 ```
 ----
 
-## Ò»¸ö»ù±¾µÄ²âÊÔÓÃÀı
+## ä¸€ä¸ªåŸºæœ¬çš„æµ‹è¯•ç”¨ä¾‹
 
 ```Java
 package cn.itheima.test;
@@ -206,16 +201,16 @@ public class UserTest {
 	@Test
 	public void testFindUserById() throws Exception {
 
-		/* Í¨¹ıÁ÷½«ºËĞÄÅäÖÃÎÄ¼ş¶ÁÈ¡½øÀ´£¬È»ºóÍ¨¹ıºËĞÄÅäÖÃÎÄ¼şÊäÈëÁ÷À´´´½¨»á»°¹¤³§ */
+		/* é€šè¿‡æµå°†æ ¸å¿ƒé…ç½®æ–‡ä»¶è¯»å–è¿›æ¥ï¼Œç„¶åé€šè¿‡æ ¸å¿ƒé…ç½®æ–‡ä»¶è¾“å…¥æµæ¥åˆ›å»ºä¼šè¯å·¥å‚ */
 		String resource = "SqlMapConfig.xml";
 		InputStream inputstream = Resources.getResourceAsStream(resource);
 		SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(inputstream);
 
-		/* Í¨¹ı¹¤³§´´½¨»á»° */
+		/* é€šè¿‡å·¥å‚åˆ›å»ºä¼šè¯ */
 		SqlSession session = factory.openSession();
 
 		/*
-		 * µÚ1¸ö²ÎÊı£ºsqlÓï¾ä(µÈÓÚ namespace + . + sqlÓï¾äµÄid) µÚ2¸ö²ÎÊı£¬ËùÒª²éÕÒµÄ±àºÅ
+		 * ç¬¬1ä¸ªå‚æ•°ï¼šsqlè¯­å¥(ç­‰äº namespace + . + sqlè¯­å¥çš„id) ç¬¬2ä¸ªå‚æ•°ï¼Œæ‰€è¦æŸ¥æ‰¾çš„ç¼–å·
 		 */
 		User user = session.selectOne("test.findUserById", 1);
 		System.out.println(user);
@@ -227,8 +222,8 @@ public class UserTest {
 		SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(Resources.getResourceAsStream("SqlMapConfig.xml"));
 		SqlSession session = factory.openSession();
 		
-		/*Èç¹ûÕâÑùĞ´µÄ»°£¬SQLÓï¾ä½«»áÊÇÒ»¸ö²ÎÊı£¬¶ø²»ÊÇÍ¨Åä·û²éÕÒ*/
-		List<User> list = session.selectList("test.findUserByUserName", "%Íõ%");
+		/*å¦‚æœè¿™æ ·å†™çš„è¯ï¼ŒSQLè¯­å¥å°†ä¼šæ˜¯ä¸€ä¸ªå‚æ•°ï¼Œè€Œä¸æ˜¯é€šé…ç¬¦æŸ¥æ‰¾*/
+		List<User> list = session.selectList("test.findUserByUserName", "%ç‹%");
 		for (User user : list) {
 			System.out.println(user.getUsername());
 		}
